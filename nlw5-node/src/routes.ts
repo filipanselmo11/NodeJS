@@ -1,19 +1,17 @@
 import { Router } from "express";
-import { getCustomRepository } from "typeorm";
+import { MessagesController } from "./controllers/MessagesController";
 import { SettingsController } from "./controllers/SettingsController";
-import { SettingsRepository } from "./repositories/SettingsRepository";
+import { UsersController } from "./controllers/UsersController";
 
 const routes = Router();
 
 const settingsController  = new SettingsController();
+const usersController = new UsersController();
+const messagesController = new MessagesController();
 
-
-/**
- * Tipos de parametros
- * Routes Params => Parametros de rotas
- * Query Params => Filtros e Buscas
- * Body Params => 
- */
-
+routes.post("/users", usersController.create);
 routes.post("/settings", settingsController.create);
+routes.post("/messages", messagesController.create);
+routes.get("/messages/:id", messagesController.showByUser);
+
 export { routes };
