@@ -35,6 +35,10 @@ class UsersService {
 
 
     }
+
+    /*async findByEmail(email) {
+
+    }*/
 }
 
 export{ UsersService }
